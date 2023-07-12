@@ -18,6 +18,7 @@ def csv_to_sqlite(csv, table):
         file = pd.read_csv(csv, usecols=range(1, 5))
     except ParserError as e:
         raise e
+        
     try:
         file.to_sql(table, conn, if_exists='replace', index=True, index_label='id')
     except DatabaseError as e:
